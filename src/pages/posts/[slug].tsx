@@ -2,6 +2,7 @@ import { NextPage, InferGetStaticPropsType } from "next";
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import Head from "next/head";
+import Link from 'next/link'
 import { getAllPosts, getPostBySlug } from "../../lib/api";
 import markdownToHtml from "../../lib/markdownToHtml";
 
@@ -57,6 +58,15 @@ const Post: NextPage<Props> = ({ post }) => {
           <h1>{post.title}</h1>
           <div>
             <p>{post.date}</p>
+            <ul>
+                {post.tags.map((tag) => (
+                  <li>
+                    <Link href={`/tags/${tag}`} key={tag}>
+                      <a>{tag}</a>
+                    </Link>
+                  </li>
+                ))}
+            </ul>
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
           </div>
         </article>

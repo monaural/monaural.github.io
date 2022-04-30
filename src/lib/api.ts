@@ -19,7 +19,7 @@ export function getPostSlugs() {
     .map(({ name }) => name.replace(/^(.+)\.md$/, '$1'));
 }
 
-export function getPostBySlug(slug: string, fields: string[] = []) {
+export function getPostBySlug(slug: string, fields: string[] = ['title', 'slug', 'date', 'tags']) {
   const fullPath = path.join(postsDirectory, slug + '.md');
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
@@ -50,10 +50,22 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
 /**
  * @param fields 取得するフィールド
  */
-export function getAllPosts(fields: string[] = []) {
+export function getAllPosts(fields: string[]) {
   const slugs = getPostSlugs();
   const posts = slugs
     .map((slug) => getPostBySlug(slug, fields))
     .sort((a, b) => (a.date > b.date ? -1 : 1));
   return posts;
+}
+
+/**
+ * @param fields 取得するフィールド
+ */
+export function getPostsByTag(tag: string) {
+  return getAllPosts()
+    .filter(post => post.tags.includes(tag))
+}
+
+export function getAllTags() {
+  return ['tag1','tag2','tag3','tag4'] //todo
 }
