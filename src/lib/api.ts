@@ -48,6 +48,14 @@ export function getPostBySlug(slug: string, fields: string[] = ['title', 'slug',
 }
 
 /**
+ * @param tag
+ */
+ export function getPostsByTag(tag: string) {
+  return getAllPosts()
+    .filter(post => post.tags.includes(tag))
+}
+
+/**
  * @param fields 取得するフィールド
  */
 export function getAllPosts(fields: string[]) {
@@ -58,14 +66,9 @@ export function getAllPosts(fields: string[]) {
   return posts;
 }
 
-/**
- * @param fields 取得するフィールド
- */
-export function getPostsByTag(tag: string) {
-  return getAllPosts()
-    .filter(post => post.tags.includes(tag))
-}
-
 export function getAllTags() {
-  return ['tag1','tag2','tag3','tag4'] //todo
+  const tags: string[] = getAllPosts(['tags'])
+    .map(p => p.tags)
+    .flat()
+  return [...new Set(tags)]
 }

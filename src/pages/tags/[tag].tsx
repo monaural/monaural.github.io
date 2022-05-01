@@ -9,12 +9,8 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 export const getStaticPaths = async () => {
   const tags = getAllTags();
   return {
-    paths: tags.map((tag) => {
-      return {
-        params: {
-          tag,
-        },
-      };
+    paths: tags.map(tag => {
+      return {params: {tag}}
     }),
     fallback: false,
   };
