@@ -1,0 +1,33 @@
+name: GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          cache: yarn
+
+      - name: install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: build and export
+        run: yarn export
+
+      - name: add nojekyll
+        run: touch ./out/.nojekyll
+
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
