@@ -3,17 +3,17 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { getAllTags } from '../../lib/api'
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>;
+type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 export const getStaticProps = async () => {
   return {
     props: {
       allTags: getAllTags()
     },
-  };
-};
+  }
+}
 
-const Home: NextPage<Props> = ({ allTags }) => {
+const TagsIndex: NextPage<Props> = ({ allTags }) => {
   return (
     <div>
       <Head>
@@ -27,16 +27,18 @@ const Home: NextPage<Props> = ({ allTags }) => {
           tags
         </h1>
 
-        <div>
+        <ul>
           {allTags.map((tag) => (
-            <Link href={`/tags/${tag}`} key={tag}>
-              <a>{tag}</a>
-            </Link>
+            <li key={tag}>
+              <Link href={`/tags/${tag}`}>
+                <a>{tag}</a>
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       </main>
     </div>
   )
 }
 
-export default Home
+export default TagsIndex

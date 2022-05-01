@@ -1,31 +1,31 @@
 import type { InferGetStaticPropsType, NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import { getPostsByTag, getAllTags } from "../../lib/api";
+import { getPostsByTag, getAllTags } from '../../lib/api'
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>;
+type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 export const getStaticPaths = async () => {
-  const tags = getAllTags();
+  const tags = getAllTags()
   return {
     paths: tags.map(tag => {
       return {params: {tag}}
     }),
     fallback: false,
-  };
-};
+  }
+}
 
 export const getStaticProps = async ({ params }: any) => {
-  const allPosts = getPostsByTag(params.tag);
+  const allPosts = getPostsByTag(params.tag)
   return {
     props: {
       allPosts,
       tag: params.tag
     }
-  };
-};
+  }
+}
 
-const Home: NextPage<Props> = ({ allPosts, tag }) => {
+const TagArchive: NextPage<Props> = ({ allPosts, tag }) => {
   return (
     <div>
       <Head>
@@ -54,4 +54,4 @@ const Home: NextPage<Props> = ({ allPosts, tag }) => {
   )
 }
 
-export default Home
+export default TagArchive

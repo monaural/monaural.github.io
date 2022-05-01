@@ -2,16 +2,16 @@ import type { InferGetStaticPropsType, NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../styles/Home.module.scss'
-import { getAllPosts } from "../lib/api";
+import { getAllPosts } from '../lib/api';
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts(["slug", "title", "date", "tags"]);
+  const allPosts = getAllPosts(['slug', 'title', 'date', 'tags'])
   return {
     props: { allPosts },
-  };
-};
+  }
+}
 
 const Home: NextPage<Props> = ({ allPosts }) => {
   return (

@@ -1,6 +1,6 @@
-import fs from "fs"
-import path from "path"
-import matter from "gray-matter"
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
 
 type Post = {
   title: string
@@ -10,28 +10,28 @@ type Post = {
   tags: string[]
 };
 
-const postsDirectory = path.join(process.cwd(), "contents");
+const postsDirectory = path.join(process.cwd(), 'contents');
 
 export function getPostSlugs() {
-  const allEntries = fs.readdirSync(postsDirectory, { withFileTypes: true });
+  const allEntries = fs.readdirSync(postsDirectory, { withFileTypes: true })
   return allEntries
     .filter((dirent) => dirent.name.match(/.+\.md$/))
-    .map(({ name }) => name.replace(/^(.+)\.md$/, '$1'));
+    .map(({ name }) => name.replace(/^(.+)\.md$/, '$1'))
 }
 
 export function getPostBySlug(slug: string, fields: string[] = []) {
   fields = fields.length ? fields : ['title', 'slug', 'date', 'tags']
-  const fullPath = path.join(postsDirectory, slug + '.md');
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
+  const fullPath = path.join(postsDirectory, slug + '.md')
+  const fileContents = fs.readFileSync(fullPath, 'utf8')
+  const { data, content } = matter(fileContents)
 
   const items: Post = {
-    title: "",
-    slug: "",
-    date: "",
-    content: "",
+    title: '',
+    slug: '',
+    date: '',
+    content: '',
     tags: []
-  };
+  }
 
   fields.forEach((field) => {
     switch (field) {
@@ -46,8 +46,9 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
       case 'tags':
         items[field] = data[field];
     }
-  });
-  return items;
+  })
+
+  return items
 }
 
 /**
@@ -59,13 +60,13 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
 }
 
 /**
- * @param fields 取得するフィールド
+ * @param fields
  */
 export function getAllPosts(fields: string[] = []) {
-  const slugs = getPostSlugs();
+  const slugs = getPostSlugs()
   const posts = slugs
     .map((slug) => getPostBySlug(slug, fields))
-    .sort((a, b) => (a.date > b.date ? -1 : 1));
+    .sort((a, b) => (a.date > b.date ? -1 : 1))
   return posts;
 }
 
