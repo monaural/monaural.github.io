@@ -60,8 +60,8 @@ const Post: NextPage<Props> = ({ post }) => {
             <p>{post.date}</p>
             <ul>
                 {post.tags.map((tag) => (
-                  <li>
-                    <Link href={`/tags/${tag}`} key={tag}>
+                  <li key={tag}>
+                    <Link href={`/tags/${tag}`}>
                       <a>{tag}</a>
                     </Link>
                   </li>
