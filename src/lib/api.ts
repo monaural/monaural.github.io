@@ -74,5 +74,6 @@ export function getAllTags() {
   const tags = getAllPosts(['tags'])
     .map(p => p.tags)
     .flat()
+    .sort() // todo 出現数を数える？
   return Array.from(new Set(tags))
 }
