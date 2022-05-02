@@ -5,7 +5,7 @@ export default function Header() {
     <header>
       <h1>
         <Link href="/">
-          <a>Stpo</a>
+          <a>stpo</a>
         </Link>
       </h1>
       <nav>
