@@ -10,7 +10,7 @@ type Post = {
   tags: string[]
 };
 
-const postsDirectory = path.join(process.cwd(), 'contents');
+const postsDirectory = path.join(process.cwd(), 'contents/posts');
 
 export function getPostSlugs() {
   const allEntries = fs.readdirSync(postsDirectory, { withFileTypes: true })
