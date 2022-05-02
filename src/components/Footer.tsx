@@ -6,6 +6,7 @@ export default function Footer() {
       <Link href="/tags">
         <a>Tags</a>
       </Link>
+      <p>footer</p>
     </footer>
   )
 }
