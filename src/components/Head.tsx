@@ -23,6 +23,7 @@ export default function Header({params}: {params: any}) {
       {/* <meta name="og:url" content={params.url} /> */}
       <link rel="icon" href="/favicon.ico" />
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css"></link>
+      <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
     </Head>
   )
 }

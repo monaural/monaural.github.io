@@ -22,7 +22,7 @@ const TagsIndex: NextPage<Props> = ({ allTags }) => {
     >
       <article>
         <h1>
-          all tags
+          All tags
         </h1>
 
         <ul>
