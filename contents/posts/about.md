@@ -1,6 +1,6 @@
 ---
 title: "[WIP] About this blog"
-date: 2022/05/01
+date: 2022/04/29
 tags: [about, blog]
 ---
 
