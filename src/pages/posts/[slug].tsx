@@ -23,7 +23,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }: any) => {
-  const post = getPostBySlug(params.slug, ['slug', 'title', 'date', 'content', 'tags']);
+  const post = getPostBySlug(params.slug)
   const content = await markdownToHtml(post.content)
   return {
     props: {
@@ -59,6 +59,12 @@ const Post: NextPage<Props> = ({ post }) => {
                 </li>
               ))}
           </ul>
+
+          {post.thumbnail &&
+            <div>
+              <img src={post.thumbnail} alt="thumbnail" />
+            </div>
+          }
           <div dangerouslySetInnerHTML={{ __html: post.content }} />
         </div>
       </article>

@@ -6,8 +6,9 @@ type Post = {
   title: string
   slug: string
   date: string
-  content: string
   tags: string[]
+  thumbnail: string
+  content: string
 };
 
 const postsDirectory = path.join(process.cwd(), 'contents/posts');
@@ -20,7 +21,7 @@ export function getPostSlugs() {
 }
 
 export function getPostBySlug(slug: string, fields: string[] = []) {
-  fields = fields.length ? fields : ['title', 'slug', 'date', 'tags']
+  fields = fields.length ? fields : ['title', 'slug', 'date', 'tags', 'thumbnail']
   const fullPath = path.join(postsDirectory, slug + '.md')
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
@@ -29,8 +30,9 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
     title: '',
     slug: '',
     date: '',
+    tags: [],
+    thumbnail: '',
     content: '',
-    tags: []
   }
 
   fields.forEach((field) => {
@@ -44,7 +46,10 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
       case 'title':
       case 'date':
       case 'tags':
-        items[field] = data[field];
+      case 'thumbnail':
+        if (data[field]) {
+          items[field] = data[field];
+        }
     }
   })
 
