@@ -22,7 +22,7 @@ JSだと、この書き方で問題ない（はず）。スプレッド構文（
 
 が返ってくる。
 
-同じコードを TypeScript で実行した場合は、こんなエラー内容になった。
+で、同じコードを TypeScript で実行した場合は、こんなエラーが発生した。
 
 ```
 Type error: Type 'Set<string>' is not an array type or a string type. Use compiler option '--downlevelIteration' to allow iterating of iterators.
@@ -37,4 +37,4 @@ const array = [1, 2, 3, 1, 2, 4]
 const foo = Array.from(new Set(array))
 ```
 
-Set から Array を作りましょうよと。
+Set から Array を作りましょうよということですね。

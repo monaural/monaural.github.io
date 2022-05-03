@@ -21,7 +21,7 @@ export function getPostSlugs() {
 }
 
 export function getPostBySlug(slug: string, fields: string[] = []) {
-  fields = fields.length ? fields : ['title', 'slug', 'date', 'tags', 'thumbnail']
+  fields = fields.length ? fields : ['title', 'slug', 'date', 'tags', 'thumbnail', 'content']
   const fullPath = path.join(postsDirectory, slug + '.md')
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)

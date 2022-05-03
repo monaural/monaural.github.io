@@ -15,7 +15,7 @@ export const getStaticProps = async () => {
 
 const Home: NextPage<Props> = ({ allPosts }) => {
   return (
-    <Layout>
+    <Layout head={{type:'website'}}>
       <article>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>

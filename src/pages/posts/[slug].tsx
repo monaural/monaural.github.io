@@ -43,7 +43,10 @@ const Post: NextPage<Props> = ({ post }) => {
 
   return (
     <Layout
-      head={ {title: post.title} }
+      head={{
+        title: post.title,
+        image: post.thumbnail
+      }}
       // todo: description, og:image
     >
       <article>
