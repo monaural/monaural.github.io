@@ -1,5 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 /public/feed.xml
+/public/sitemap.txt
 
 # dependencies
 /node_modules
