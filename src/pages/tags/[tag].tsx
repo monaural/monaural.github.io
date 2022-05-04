@@ -1,6 +1,6 @@
 import type { InferGetStaticPropsType, NextPage } from 'next'
 import Layout from '../../components/Layout'
-import Link from 'next/link'
+import PostCard from '../../components/PostCard'
 import { getPostsByTag, getAllTags } from '../../lib/api'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
@@ -32,22 +32,13 @@ const TagArchive: NextPage<Props> = ({ allPosts, tag }) => {
         title: `Tag archive: ${tag}`
       }}
     >
-      <article>
-        <h1>
-          Tag archive &quot;{tag}&quot;
-        </h1>
+      <h1>
+        Tag archive &quot;{tag}&quot;
+      </h1>
 
-        <div>
-          {allPosts.map((post) => (
-            <Link href={`/posts/${post.slug}`} key={post.slug}>
-              <a>
-                <h2>{post.title}</h2>
-                <p>{post.date}</p>
-              </a>
-            </Link>
-          ))}
-        </div>
-      </article>
+      {allPosts.map((post, i) => (
+        <PostCard post={post} key={i} />
+      ))}
     </Layout>
   )
 }
