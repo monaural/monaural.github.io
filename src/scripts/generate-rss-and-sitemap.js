@@ -60,7 +60,7 @@ async function generateSitemap(posts, filename, length) {
     .map(post => post.url)
     .join("\n")
 
-  await fs.writeFile(filename, sitemap)
+  await fs.writeFile(filename, siteUrl + "\n" + sitemap)
 }
 
 generate()
