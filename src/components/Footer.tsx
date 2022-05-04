@@ -3,10 +3,10 @@ import Link from 'next/link'
 export default function Footer() {
   return (
     <footer>
-      <Link href="/tags">
-        <a>Tags</a>
-      </Link>
       <p>footer</p>
+      <Link href="/feed.xml">
+        <a>RSS</a>
+      </Link>
     </footer>
   )
 }

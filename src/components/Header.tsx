@@ -8,6 +8,7 @@ export default function Header() {
           <a>stpo</a>
         </Link>
       </h1>
+      <p>ストッポ</p>
       <nav>
         <ul>
           <li>
