@@ -4,8 +4,15 @@ date: 2022/04/29
 tags: [about, blog]
 ---
 
-## About Page
+## About
 
 あとで書く
 
-- [Twitter @matsuoshi](https://twitter.com/matsuoshi)
+Next.js + GitHub Pages で作ってみたブログです
+
+## Author
+
+matsuo (@matsuoshi)
+
+- [Twitter](https://twitter.com/matsuoshi)
+- [Instagram](https://instagram.com/matsuoshi)
