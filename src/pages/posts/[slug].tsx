@@ -47,29 +47,28 @@ const Post: NextPage<Props> = ({ post }) => {
         title: post.title,
         image: post.thumbnail
       }}
-      // todo: description, og:image
+      // todo: description
     >
       <article>
         <h1>{post.title}</h1>
-        <div>
-          <p>{post.date}</p>
-          <ul>
-              {post.tags.map((tag) => (
-                <li key={tag}>
-                  <Link href={`/tags/${tag}`}>
-                    <a>{tag}</a>
-                  </Link>
-                </li>
-              ))}
-          </ul>
+        <time>{post.date}</time>&nbsp;
 
-          {post.thumbnail &&
-            <div>
-              <img src={post.thumbnail} alt="thumbnail" />
-            </div>
-          }
-          <div dangerouslySetInnerHTML={{ __html: post.content }} />
-        </div>
+        tags:&nbsp;
+          {post.tags.map((tag) => (
+            <>
+              <Link href={`/tags/${tag}`} key={tag}>
+                <a>{tag}</a>
+              </Link>
+              &nbsp;
+            </>
+          ))}
+
+        {post.thumbnail &&
+          <p>
+            <img src={post.thumbnail} alt="thumbnail image" />
+          </p>
+        }
+        <div dangerouslySetInnerHTML={{ __html: post.content }} />
       </article>
     </Layout>
   )

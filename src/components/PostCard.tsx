@@ -6,7 +6,7 @@ export default function PostCard({post}: {post: any}) {
       <Link href={`/posts/${post.slug}`} key={post.slug}>
         <a>
           <h2>{post.title}</h2>
-          <p>{post.date}</p>
+          <time>{post.date}</time>
         </a>
       </Link>
 
