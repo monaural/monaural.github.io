@@ -13,18 +13,20 @@ type Post = {
 
 const postsDirectory = path.join(process.cwd(), 'contents/posts');
 
+/**
+ * 全投稿の slug を取得
+ * @returns
+ */
 export function getPostSlugs() {
   const allEntries = fs.readdirSync(postsDirectory, { withFileTypes: true })
   return allEntries
-    .filter((dirent) => dirent.name.match(/.+\.md$/))
-    .map(({ name }) => name.replace(/^(.+)\.md$/, '$1'))
+    .filter((dirent) => dirent.name.match(/.+\.mdx?$/))
+    .map(({ name }) => name.replace(/^(.+)\.mdx?$/, '$1'))
 }
 
 export function getPostBySlug(slug: string, fields: string[] = []) {
   fields = fields.length ? fields : ['title', 'slug', 'date', 'tags', 'thumbnail', 'content']
-  const fullPath = path.join(postsDirectory, slug + '.md')
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
-  const { data, content } = matter(fileContents)
+  const {data, content} = getPostContents(slug)
 
   const items: Post = {
     title: '',
@@ -54,6 +56,21 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   })
 
   return items
+/**
+ * スラッグから .mdx|.md ファイルを読み込む
+ * @param slug
+ * @returns
+ */
+function getPostContents(slug: string): any {
+  const extensions = ['mdx', 'md']
+  for (const extension of extensions) {
+    const fullPath = path.join(postsDirectory, `${slug}.${extension}`)
+    if (! fs.existsSync(fullPath)) {
+      continue;
+    }
+    const fileContents = fs.readFileSync(fullPath, 'utf8')
+    return matter(fileContents)
+  }
 }
 
 /**
