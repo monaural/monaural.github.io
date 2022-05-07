@@ -28,34 +28,24 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   fields = fields.length ? fields : ['title', 'slug', 'date', 'tags', 'thumbnail', 'content']
   const {data, content} = getPostContents(slug)
 
-  const items: Post = {
-    title: '',
-    slug: '',
-    date: '',
-    tags: [],
-    thumbnail: '',
-    content: '',
-  }
+  const post: any = {}
 
-  fields.forEach((field) => {
+  fields.forEach(field => {
     switch (field) {
       case 'slug':
-        items[field] = slug;
-        break;
+        post.slug = slug;
+        break
       case 'content':
-        items[field] = content;
-        break;
-      case 'title':
-      case 'date':
-      case 'tags':
-      case 'thumbnail':
-        if (data[field]) {
-          items[field] = data[field];
-        }
+        post.content = content;
+        break
+      default:
+        post[field] = data[field] || null
     }
   })
 
-  return items
+  return post
+}
+
 /**
  * スラッグから .mdx|.md ファイルを読み込む
  * @param slug

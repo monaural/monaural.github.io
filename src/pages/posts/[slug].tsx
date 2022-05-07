@@ -54,7 +54,7 @@ const Post: NextPage<Props> = ({ post }) => {
         <time>{post.date}</time>&nbsp;
 
         tags:&nbsp;
-          {post.tags.map((tag) => (
+          {post.tags.map((tag: string) => (
             <>
               <Link href={`/tags/${tag}`} key={tag}>
                 <a>{tag}</a>
