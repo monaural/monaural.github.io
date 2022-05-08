@@ -5,7 +5,7 @@ export default function Footer() {
     <>
       <br></br>
       <footer>
-        <p>stpo: ストッポ</p>
+        <p>2022 monaural / モノラル</p>
         <Link href="/feed.xml">
           <a>RSS</a>
         </Link>

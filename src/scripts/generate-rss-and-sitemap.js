@@ -2,7 +2,7 @@ const { promises: fs } = require('fs')
 const path = require('path')
 const RSS = require('rss')
 const matter = require('gray-matter')
-const siteUrl = 'https://matsuoshi.github.io'
+const siteUrl = 'https://monaural.github.io'
 
 async function generate() {
   const posts = await getAllPosts()
@@ -33,7 +33,7 @@ async function getAllPosts() {
 
 async function generateRss(posts, filename, length) {
   const feed = new RSS({
-    title: 'stpo',
+    title: 'monaural blog',
     site_url: siteUrl,
     feed_url: `${siteUrl}/feed.xml`
   })

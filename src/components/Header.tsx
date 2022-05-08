@@ -5,10 +5,9 @@ export default function Header() {
     <header>
       <h1>
         <Link href="/">
-          <a>stpo</a>
+          <a>monaural</a>
         </Link>
       </h1>
-      <p>ストッポ</p>
       <nav>
         <ul>
           <li>

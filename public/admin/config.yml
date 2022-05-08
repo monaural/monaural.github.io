@@ -1,7 +1,7 @@
 backend:
   # name: test-repo
   name: github
-  repo: matsuoshi/matsuoshi.github.io
+  repo: monaural/monaural.github.io
   branch: main
 
 # publish_mode: editorial_workflow
