@@ -8,7 +8,7 @@ async function generate() {
   const posts = await getAllPosts()
 
   await generateRss(posts, 'public/feed.xml', 20)
-  await generateSitemap(posts, 'public/sitemap.txt', 1000)
+  await generateSitemap(posts, 'public/sitemap.xml', 1000)
 }
 
 async function getAllPosts() {
@@ -55,12 +55,18 @@ async function generateRss(posts, filename, length) {
 }
 
 async function generateSitemap(posts, filename, length) {
+  posts.unshift({url: siteUrl})
+
   const sitemap = posts
     .slice(0, length)
-    .map(post => post.url)
+    .map(post => `<sitemap><loc>${post.url}</loc></sitemap>`)
     .join("\n")
 
-  await fs.writeFile(filename, siteUrl + "\n" + sitemap)
+  await fs.writeFile(filename, `<?xml version='1.0' encoding='UTF-8'?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemap}
+</sitemapindex>`
+  )
 }
 
 generate()
