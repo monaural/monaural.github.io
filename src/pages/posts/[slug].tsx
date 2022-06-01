@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import Layout from '../../components/Layout'
 import Link from 'next/link'
+import Image from 'next/image'
 import { getAllPosts, getPostBySlug } from '../../lib/api'
 import markdownToHtml from '../../lib/markdownToHtml'
 
@@ -67,7 +68,7 @@ const Post: NextPage<Props> = ({ post }) => {
 
         {post.thumbnail &&
           <p>
-            <img src={post.thumbnail} alt="thumbnail image" />
+            <Image src={post.thumbnail} width={1920} height={1280} alt="thumbnail image" />
           </p>
         }
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
