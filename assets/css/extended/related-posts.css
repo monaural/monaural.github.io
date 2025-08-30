@@ -1,0 +1,43 @@
+.related-content {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+.related-content h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5em;
+}
+
+.related-posts {
+    padding: 0;
+    list-style: none;
+}
+
+.related-posts li {
+    margin-bottom: 1rem;
+}
+
+.related-posts a {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.related-posts a:hover {
+    background-color: var(--entry);
+}
+
+.related-post-title {
+    margin-right: 1rem;
+    font-weight: 500;
+}
+
+.related-post-meta {
+    color: var(--secondary);
+    font-size: 0.875em;
+    white-space: nowrap;
+}

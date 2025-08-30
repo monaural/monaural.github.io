@@ -62,6 +62,10 @@
   {{- if (.Param "comments") }}
   {{- partial "comments.html" . }}
   {{- end }}
+
+  {{- if not (.Param "hideRelated") }}
+  {{- partial "related.html" . }}
+  {{- end }}
 </article>
 
 {{- end }}{{/* end main */}}
