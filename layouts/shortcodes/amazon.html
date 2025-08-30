@@ -1,0 +1,20 @@
+{{ if .IsNamedParams }}
+
+<figure class="embed amazon{{ with .Get "class" }} {{.}}{{ end }}">
+  <a href="//af.moshimo.com/af/c/click?a_id=1358521&amp;p_id=170&amp;pc_id=185&amp;pl_id=4062&amp;url=https%3A%2F%2Fwww.amazon.co.jp%2Fdp%2F{{ .Get "asin" }}">
+    <span class="embed_image">
+      <img src="{{ with .Get "image" }}{{.}}{{ else }}https://images-fe.ssl-images-amazon.com/images/P/{{ .Get "asin" }}.09.LZZZZZZZ{{ end }}" alt="">
+    </span>
+  </a>
+  {{ with .Get "title" }}
+  <figcaption><h4>{{ . }}</h4></figcaption>
+  {{ end }}
+</figure>
+
+{{ else }}
+
+<figure class="embed amazon">
+  <a href="//af.moshimo.com/af/c/click?a_id=1358521&amp;p_id=170&amp;pc_id=185&amp;pl_id=4062&amp;url=https%3A%2F%2Fwww.amazon.co.jp%2Fdp%2F{{ index .Params 0 }}"><img src="https://images-fe.ssl-images-amazon.com/images/P/{{ index .Params 0 }}.09.LZZZZZZZ" alt=""></a>
+</figure>
+
+{{ end }}

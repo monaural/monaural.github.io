@@ -1,0 +1,17 @@
+.footer-tags {
+  margin: 50px 0;
+
+  h3 {
+    margin-bottom: 1rem;
+  }
+
+  .post-tags {
+    justify-content: center;
+
+    li {
+      a, a:hover {
+        border: 1px solid var(--tertiary);
+      }
+    }
+  }
+}

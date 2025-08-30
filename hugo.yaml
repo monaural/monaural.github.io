@@ -1,0 +1,49 @@
+baseURL: https://monaural.github.io/
+title: monaural memo
+languageCode: ja_jp
+theme: PaperMod
+
+menu:
+  main:
+    - identifier: tags
+      name: tags
+      url: /tags/
+      weight: 10
+    - identifier: search
+      name: search
+      url: /search/
+      weight: 20
+    - identifier: about
+      name: about
+      url: /about/
+      weight: 30
+
+params:
+  env: production
+  homeInfoParams:
+    Title: monaural memo
+    Content: メモです
+  assets:
+    favicon: "/images/logo.png"
+    favicon16x16: "/images/logo.png"
+    favicon32x32: "/images/logo.png"
+    apple_touch_icon: "/images/logo.png"
+    safari_pinned_tab: "/images/logo.png"
+  hideSummary: true
+  # socialIcons:
+  #   - name: "facebook"
+  #     url: "https://facebook.com/matsuoshi"
+
+disableKinds:
+  - section
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true # for iframe
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
